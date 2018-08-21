@@ -13,14 +13,6 @@ namespace EETLauncherWPF {
     /// </summary>
     public partial class EETLauncherMain {
 
-        public static readonly RoutedUICommand PlayEET = new RoutedUICommand();
-        public static readonly RoutedUICommand OpenSettingsWindow = new RoutedUICommand();
-        public static readonly RoutedUICommand CheckForUpdates = new RoutedUICommand();
-        public static readonly RoutedUICommand OpenEETHomePage = new RoutedUICommand();
-        public static readonly RoutedUICommand Exit = new RoutedUICommand();
-        public static readonly RoutedUICommand WindowMouseDown = new RoutedUICommand();
-        public static readonly RoutedUICommand OpenModManagerPage = new RoutedUICommand();
-
         public EETLauncherMain() {
 
             InitializeComponent();
