@@ -47,7 +47,8 @@
         <Setter Property="FontSize" Value="18" />
         <Setter Property="FontFamily" Value="/EETLauncher;component/Resources/#Franklin Gothic Demi Cond"/>
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="White" />
+        <!-- Binding, Style Trigger, Style Setter, Data/Control template trigger, template property so binding for Color has to be set here -->
+        <Setter Property="Foreground" Value="{ Binding Color, FallbackValue=White, TargetNullValue=DarkOrange }" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Style.Triggers>
