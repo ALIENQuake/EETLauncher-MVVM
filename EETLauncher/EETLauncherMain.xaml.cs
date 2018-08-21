@@ -16,7 +16,6 @@ namespace EETLauncherWPF {
         public static readonly RoutedUICommand PlayEET = new RoutedUICommand();
         public static readonly RoutedUICommand OpenSettingsWindow = new RoutedUICommand();
         public static readonly RoutedUICommand CheckForUpdates = new RoutedUICommand();
-        public static readonly RoutedUICommand OpenEETReadMe = new RoutedUICommand();
         public static readonly RoutedUICommand OpenEETHomePage = new RoutedUICommand();
         public static readonly RoutedUICommand Exit = new RoutedUICommand();
         public static readonly RoutedUICommand WindowMouseDown = new RoutedUICommand();
@@ -25,14 +24,7 @@ namespace EETLauncherWPF {
         public EETLauncherMain() {
 
             InitializeComponent();
-            CommandBindings.Add( new CommandBinding( PlayEET, PlayEET_OnExecuted, PlayEET_CanExecute ) );
-            CommandBindings.Add( new CommandBinding( OpenSettingsWindow, OpenSettingsWindow_OnExecuted, OpenSettingsWindow_CanExecute ) );
-            CommandBindings.Add( new CommandBinding( CheckForUpdates, CheckForUpdates_OnExecuted, CheckForUpdates_CanExecute ) );
-            CommandBindings.Add( new CommandBinding( OpenEETReadMe, OpenEETReadMe_OnExecuted, OpenEETReadMe_CanExecute ) );
-            CommandBindings.Add( new CommandBinding( OpenEETHomePage, OpenEETHomePage_OnExecuted, OpenEETHomePage_CanExecute ) );
-            CommandBindings.Add( new CommandBinding( OpenModManagerPage, OpenModManagerPage_OnExecuted, OpenModManagerPage_CanExecute ) );
-            CommandBindings.Add( new CommandBinding( Exit, Exit_OnExecuted, Exit_CanExecute ) );
-            CommandBindings.Add( new CommandBinding( WindowMouseDown, WindowMouseDown_OnExecuted, WindowMouseDown_CanExecute ) );
+            DataContext = new MainViewModel();
 
             AppRootPath = Path.GetDirectoryName( AppDomain.CurrentDomain.BaseDirectory ) + Path.DirectorySeparatorChar;
             AppLogFileName = (string) FindResource( "AppLogFileName" );
@@ -76,16 +68,8 @@ namespace EETLauncherWPF {
             EETLauncherMain_LB_README.Visibility = Visibility.Hidden;
         }
 
-        private void WindowMouseDown_CanExecute( object sender, CanExecuteRoutedEventArgs e ) {
-            e.CanExecute = true;
-        }
-
         private void WindowMouseDown_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
             try { DragMove(); } catch {}
-        }
-
-        private void OpenSettingsWindow_CanExecute( object sender, CanExecuteRoutedEventArgs e ) {
-            e.CanExecute = true;
         }
 
         private void OpenSettingsWindow_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
@@ -95,16 +79,8 @@ namespace EETLauncherWPF {
             Visibility = Visibility.Hidden;
         }
 
-        private void CheckForUpdates_CanExecute( object sender, CanExecuteRoutedEventArgs e ) {
-            e.CanExecute = true;
-        }
-
         private void CheckForUpdates_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
             // Check for updates
-        }
-
-        private void PlayEET_CanExecute( object sender, CanExecuteRoutedEventArgs e ) {
-            e.CanExecute = true;
         }
 
         private void PlayEET_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
@@ -113,37 +89,25 @@ namespace EETLauncherWPF {
             Application.Current.Shutdown();
         }
 
-        private void OpenEETReadMe_CanExecute( object sender, CanExecuteRoutedEventArgs e ) {
-            e.CanExecute = true;
-        }
-
         private void OpenEETReadMe_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
             Process.Start( AppRootPath + EETReadMeFilePath );
-        }
-
-        private void OpenModManagerPage_CanExecute( object sender, CanExecuteRoutedEventArgs e ) {
-            e.CanExecute = true;
         }
 
         private void OpenModManagerPage_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
             Process.Start( ModManagerHomePage );
         }
 
-        private void OpenEETHomePage_CanExecute( object sender, CanExecuteRoutedEventArgs e ) {
-            e.CanExecute = true;
-        }
-
         private void OpenEETHomePage_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
             Process.Start( EETHomePage );
-        }
-
-        private void Exit_CanExecute( object sender, CanExecuteRoutedEventArgs e ) {
-            e.CanExecute = true;
         }
 
         private void Exit_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
             Close();
             Application.Current.Shutdown();
+        }
+
+        private void Window_MouseLeftButtonDown( object sender, MouseButtonEventArgs e ) {
+            try { DragMove(); } catch {}
         }
     }
 }

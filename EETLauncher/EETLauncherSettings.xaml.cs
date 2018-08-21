@@ -19,30 +19,10 @@ namespace EETLauncherWPF {
 
         public static readonly RoutedUICommand OpenEETLua = new RoutedUICommand();
         public static readonly RoutedUICommand ChangeEETGuiAsync = new RoutedUICommand();
-        public static readonly RoutedUICommand SettingsPageBack = new RoutedUICommand();
-        public static readonly RoutedUICommand WindowMouseDown = new RoutedUICommand();
-
+        
         public EETLauncherSettings() {
-            var eetgui = new EETLauncherEETGui();
-            EETGui = eetgui;
-            EETGui.Current = GetEETCurrentGUI();
-            EETGui.ChangeTo = GetEETChangeToGUI( EETGui.Current );
-
             InitializeComponent();
-
-            DataContext = EETGui;
-            CommandBindings.Add( new CommandBinding( OpenEETLua, OpenEETLua_OnExecuted, OpenEETLua_CanExecute ) );
-            CommandBindings.Add( new CommandBinding( ChangeEETGuiAsync, ChangeEETGuiAsync_OnExecuted, ChangeEETGuiAsync_CanExecute ) );
-            CommandBindings.Add( new CommandBinding( SettingsPageBack, SettingsPageBack_OnExecuted, SettingsPageBack_CanExecute ) );
-            CommandBindings.Add( new CommandBinding( WindowMouseDown, WindowMouseDown_OnExecuted, WindowMouseDown_CanExecute ) );
-        }
-
-        private void WindowMouseDown_CanExecute( object sender, CanExecuteRoutedEventArgs e ) {
-            e.CanExecute = true;
-        }
-
-        private void WindowMouseDown_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
-            try { DragMove(); } catch {}
+            DataContext =  new SettingsViewModel(); 
         }
 
         private void OpenEETLua_CanExecute( object sender, CanExecuteRoutedEventArgs e ) {
@@ -71,8 +51,8 @@ namespace EETLauncherWPF {
             var EETGuiProcess = new Process { StartInfo = SetEETGUI( EETGui.ChangeTo ) };
 
             try {
-                // because we want to target .NET 4.0, we are using TaskEx.Run from Microsoft.Bcl.Async instead of default Task.Run from .NET Framework 4.5
-                var result = await TaskEx.Run( () => {
+
+                var result = await Task.Run( () => {
                     EETGuiProcess.Start();
                     if (EETGuiProcess.Id >= 0)
                     {
@@ -104,7 +84,11 @@ namespace EETLauncherWPF {
             e.CanExecute = true;
         }
 
-        private void SettingsPageBack_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
+        private void Window_MouseLeftButtonDown( object sender, MouseButtonEventArgs e ) {
+             try { DragMove(); } catch {}
+        }
+
+        private void EETLauncherSettings_LB_Back_Click( object sender, RoutedEventArgs e ) {
             if ( Application.Current.MainWindow == null ) return;
             Application.Current.MainWindow.Left = Left;
             Application.Current.MainWindow.Top = Top;
