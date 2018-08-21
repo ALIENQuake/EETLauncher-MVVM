@@ -5,7 +5,6 @@
     xmlns:local="clr-namespace:EETLauncherWPF"
     Title="EETLauncherMain" Height="361" Width="345" Background="Black" Foreground="White" WindowStyle="None" ResizeMode="NoResize"
     MouseLeftButtonDown="Window_MouseLeftButtonDown"
-    Visibility="{Binding MainVisibility}"
 >
     <Grid>
         <Grid.Background>
@@ -14,7 +13,7 @@
         <Image Source="Resources/EETLauncher-Logo.png" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <StackPanel Margin="124,116,131,23" Orientation="Vertical" VerticalAlignment="Center" Height="222">
             <Button x:Name="EETLauncherMain_LB_PLAY" Content="PLAY" VerticalAlignment="Top" Command="{ Binding PlayEET }" IsEnabled="{ Binding Enabled }" />
-            <Button x:Name="EETLauncherMain_LB_SETTINGS" Content="SETTINGS" VerticalAlignment="Top" Command="{ Binding OpenSettingsWindow }" IsEnabled="{ Binding Enabled }" />
+            <Button x:Name="EETLauncherMain_LB_SETTINGS" Content="SETTINGS" VerticalAlignment="Top" Click="EETLauncherMain_LB_SETTINGS_Click" IsEnabled="{ Binding Enabled }" />
             <Button x:Name="EETLauncherMain_LB_UPDATES" Content="UPDATES" VerticalAlignment="Top" Visibility="Hidden" Command="{ Binding CheckForUpdates }" IsEnabled="{ Binding Enabled }" />
             <Button x:Name="EETLauncherMain_LB_README" Content="README" VerticalAlignment="Top" Command="{ Binding OpenEETReadMe }" IsEnabled="{ Binding Enabled }" />
             <Button x:Name="EETLauncherMain_LB_HOMEPAGE" Content="HOMEPAGE" VerticalAlignment="Top" Command="{ Binding OpenEETHomePage }" IsEnabled="{ Binding Enabled }" />

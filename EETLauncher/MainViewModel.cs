@@ -16,10 +16,8 @@ namespace EETLauncherWPF {
 
         public bool _enabled;
         public Visibility _logVisibility;
-        public Visibility _mainVisibility;
 
         public ICommand PlayEET {get;}
-        public ICommand OpenSettingsWindow {get;}
         public ICommand OpenEETReadMe {get;}
         public ICommand OpenEETHomePage {get;}
         public ICommand OpenModManagerPage {get;}
@@ -30,15 +28,14 @@ namespace EETLauncherWPF {
 
             Enabled = true;
             LogVisibility = Visibility.Hidden;
-            MainVisibility = Visibility.Visible;
 
             PlayEET = ReactiveCommand.Create( PlayEET_OnExecuted );
-            OpenSettingsWindow = ReactiveCommand.Create( OpenSettingsWindow_OnExecuted );
             OpenEETReadMe = ReactiveCommand.Create( OpenEETReadMe_OnExecuted );
             OpenEETHomePage = ReactiveCommand.Create( OpenEETHomePage_OnExecuted );
             OpenModManagerPage = ReactiveCommand.Create( OpenModManagerPage_OnExecuted );
             CheckForUpdates = ReactiveCommand.Create( CheckForUpdates_OnExecuted );
             Exit = ReactiveCommand.Create( Exit_OnExecuted );
+
         }
         
         public bool Enabled {
@@ -51,29 +48,12 @@ namespace EETLauncherWPF {
             set => this.RaiseAndSetIfChanged(ref _logVisibility, value);
         }
 
-        public Visibility MainVisibility {
-            get => _mainVisibility;
-            set => this.RaiseAndSetIfChanged(ref _mainVisibility, value);
-        }
-
-        public void OpenSettingsWindow_OnExecuted() {
-            var EETLauncherSettings = new EETLauncherSettings {
-                // Owner = this 
-                Owner = Application.Current.MainWindow
-            };
-            EETLauncherSettings.Show();
-            Application.Current.MainWindow.Hide();
-            //Visibility = Visibility.Hidden;
-            MainVisibility = Visibility.Hidden;
-        }
-
         public void CheckForUpdates_OnExecuted() {
             // Check for updates
         }
 
         public void PlayEET_OnExecuted() {
             Process.Start( AppRootPath + GameExeFileName );
-            //Close();
             Application.Current.Shutdown();
         }
 
@@ -90,7 +70,6 @@ namespace EETLauncherWPF {
         }
 
         public void Exit_OnExecuted() {
-            //Close();
             Application.Current.Shutdown();
         }
     }

@@ -68,46 +68,15 @@ namespace EETLauncherWPF {
             EETLauncherMain_LB_README.Visibility = Visibility.Hidden;
         }
 
-        private void WindowMouseDown_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
-            try { DragMove(); } catch {}
-        }
-
-        private void OpenSettingsWindow_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
-            var EETLauncherSettings = new EETLauncherSettings { Owner = this };
-            EETLauncherSettings.Show();
-            //Hide();
-            Visibility = Visibility.Hidden;
-        }
-
-        private void CheckForUpdates_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
-            // Check for updates
-        }
-
-        private void PlayEET_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
-            Process.Start( AppRootPath + GameExeFileName );
-            Close();
-            Application.Current.Shutdown();
-        }
-
-        private void OpenEETReadMe_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
-            Process.Start( AppRootPath + EETReadMeFilePath );
-        }
-
-        private void OpenModManagerPage_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
-            Process.Start( ModManagerHomePage );
-        }
-
-        private void OpenEETHomePage_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
-            Process.Start( EETHomePage );
-        }
-
-        private void Exit_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
-            Close();
-            Application.Current.Shutdown();
-        }
-
         private void Window_MouseLeftButtonDown( object sender, MouseButtonEventArgs e ) {
             try { DragMove(); } catch {}
+        }
+
+        private void EETLauncherMain_LB_SETTINGS_Click( object sender, RoutedEventArgs e ) {
+            var EETLauncherSettings = new EETLauncherSettings { Owner = this };
+            Visibility = Visibility.Hidden;
+            EETLauncherSettings.ShowDialog();
+            Visibility = Visibility.Visible;
         }
     }
 }
