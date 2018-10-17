@@ -1,17 +1,15 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Reactive;
-using System.Reactive.Concurrency;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using ReactiveUI;
-using static EETLauncherWPF.EETLauncherConfig;
-using static EETLauncherWPF.EETLauncherGlobal;
+using static EETLauncherMVVM.EETLauncherConfig;
+using static EETLauncherMVVM.EETLauncherGlobal;
 
-namespace EETLauncherWPF {
+namespace EETLauncherMVVM {
     class SettingsViewModel : ReactiveObject {
 
         private string _changeTo;
@@ -25,7 +23,7 @@ namespace EETLauncherWPF {
             CurrentGui = "BG2";
             ChangeTo = "SoD";
             Enabled = true;
-            LogVisibility = Visibility.Hidden;;
+            LogVisibility = Visibility.Hidden;
             OpenEETLua = ReactiveCommand.Create(OpenEETLua_OnExecuted);
             ChangeEETGuiAsync = ReactiveCommand.Create(ChangeEETGuiAsync_OnExecuted);
         }

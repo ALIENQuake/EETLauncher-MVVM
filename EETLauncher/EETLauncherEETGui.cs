@@ -1,5 +1,5 @@
 //Copyright © alienquake@hotmail.com
-namespace EETLauncherWPF
+namespace EETLauncherMVVM
 {
     public class EETLauncherEETGui {
 

@@ -1,17 +1,10 @@
-using System;
 using System.Diagnostics;
-using System.IO;
-using System.Reactive;
-using System.Reactive.Concurrency;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
 using ReactiveUI;
-using static EETLauncherWPF.EETLauncherConfig;
-using static EETLauncherWPF.EETLauncherGlobal;
+using static EETLauncherMVVM.EETLauncherConfig;
 
-namespace EETLauncherWPF {
+namespace EETLauncherMVVM {
     class MainViewModel : ReactiveObject {
 
         public bool _enabled;

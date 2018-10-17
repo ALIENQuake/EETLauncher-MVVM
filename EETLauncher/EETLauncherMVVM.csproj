@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{40FBE520-1105-47F9-8E57-247AC1A26D10}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>EETLauncherWPF</RootNamespace>
+    <RootNamespace>EETLauncherMVVM</RootNamespace>
     <AssemblyName>EETLauncher</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -89,17 +89,17 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="costura.fody">
-      <Version>3.1.0</Version>
+      <Version>3.1.4</Version>
     </PackageReference>
-    <PackageReference Include="Fody" Version="3.1.4">
+    <PackageReference Include="Fody" Version="3.2.9">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="ReactiveUI">
-      <Version>8.7.1</Version>
+      <Version>9.0.1</Version>
     </PackageReference>
     <PackageReference Include="ReactiveUI.WPF">
-      <Version>8.7.1</Version>
+      <Version>9.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -177,7 +177,6 @@
     </None>
     <None Include="EETLauncher.manifest" />
     <None Include="EETLauncher.snk" />
-    <None Include="EETLauncherWPF_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

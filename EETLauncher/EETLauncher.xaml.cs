@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace EETLauncherWPF {
+namespace EETLauncherMVVM {
     /// <summary>
     /// Interaction logic for EETLauncher.xaml
     /// </summary>

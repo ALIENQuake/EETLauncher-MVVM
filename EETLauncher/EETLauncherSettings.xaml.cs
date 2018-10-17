@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using static EETLauncherWPF.EETLauncherConfig;
-using static EETLauncherWPF.EETLauncherGlobal;
+using static EETLauncherMVVM.EETLauncherConfig;
+using static EETLauncherMVVM.EETLauncherGlobal;
 
-namespace EETLauncherWPF {
+namespace EETLauncherMVVM {
     /// <summary>
     /// Interaction logic for EETLauncherSettings.xaml
     /// </summary>

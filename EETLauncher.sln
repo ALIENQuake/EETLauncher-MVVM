@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27705.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EETLauncherWPF", "EETLauncher\EETLauncherWPF.csproj", "{40FBE520-1105-47F9-8E57-247AC1A26D10}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EETLauncherMVVM", "EETLauncher\EETLauncherMVVM.csproj", "{40FBE520-1105-47F9-8E57-247AC1A26D10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

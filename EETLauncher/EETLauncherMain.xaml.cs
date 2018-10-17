@@ -1,13 +1,12 @@
 //Copyright © alienquake@hotmail.com
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
-using static EETLauncherWPF.EETLauncherConfig;
-using static EETLauncherWPF.EETLauncherGlobal;
+using static EETLauncherMVVM.EETLauncherConfig;
+using static EETLauncherMVVM.EETLauncherGlobal;
 
-namespace EETLauncherWPF {
+namespace EETLauncherMVVM {
     /// <summary>
     /// Interaction logic for <see cref="EETLauncher"/>.xaml
     /// </summary>

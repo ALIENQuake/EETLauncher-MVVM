@@ -1,10 +1,10 @@
 <Window
-    x:Class="EETLauncherWPF.EETLauncherSettings"
+    x:Class="EETLauncherMVVM.EETLauncherSettings"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:EETLauncherWPF"
+    xmlns:local="clr-namespace:EETLauncherMVVM"
     mc:Ignorable="d"
     Title="EETLauncherSettings" Height="361" Width="345" Background="Black" Foreground="White" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
     MouseLeftButtonDown="Window_MouseLeftButtonDown"
@@ -19,6 +19,7 @@
             <Label x:Name="EETLauncherSettings_L_Settings" Content="SETTINGS" VerticalAlignment="Top" Foreground="White"/>
             <Separator Width="48" Height="12" Background="Transparent"  VerticalAlignment="Top"/>
             <Label x:Name="EETLauncherSettings_L_CurrentGui" Content="{ Binding CurrentGui, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, FallbackValue=??? }" ContentStringFormat="CURRENT EET GUI: {0}" VerticalAlignment="Top" Height="30" Foreground="{ Binding Color, FallbackValue=White }" IsEnabled="{ Binding Enabled }" />
+             <!-- Binding, Style Trigger, Style Setter, Data/Control template trigger, template property so binding for Color has to be set inside ResourceDictionary -->
             <Button x:Name="EETLauncherSettings_LB_ChangeGui" Content="{ Binding ChangeTo, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, FallbackValue=??? }" ContentStringFormat="CHANGE TO {0}" VerticalAlignment="Top" Height="30" Command="{ Binding ChangeEETGuiAsync }" IsEnabled="{ Binding Enabled }" />
             <Button x:Name="EETLauncherSettings_LB_OpenEETLua" Content="OPEN EET Baldur.lua" VerticalAlignment="Top" Command="{ Binding OpenEETLua }" />
             <Separator Width="48" Height="48" Background="Transparent"  VerticalAlignment="Top"/>
