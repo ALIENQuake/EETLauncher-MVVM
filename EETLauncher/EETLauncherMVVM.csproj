@@ -99,7 +99,7 @@
       <Version>9.0.1</Version>
     </PackageReference>
     <PackageReference Include="ReactiveUI.WPF">
-      <Version>9.0.1</Version>
+      <Version>10.5.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
