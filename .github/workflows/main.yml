@@ -16,4 +16,4 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: EETLauncher-Release
-          path: bin\Release
+          path: EETLauncher\bin\Release
