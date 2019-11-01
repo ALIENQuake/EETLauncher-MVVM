@@ -18,8 +18,8 @@ jobs:
     - name: GCI
       run: Get-ChildItem $Env:GITHUB_WORKSPACE -Recurse
 
-      #- name: Upload artifact
-      #  uses: actions/upload-artifact@master
-      #  with:
-      #    name: EETLauncher-Release
-      #    path: EETLauncher\bin\Release
+    - name: Upload artifact
+      uses: actions/upload-artifact@master
+      with:
+        name: EETLauncher-Release
+        path: d:\a\EETLauncher-MVVM\EETLauncher-MVVM\EETLauncher\bin\Release\
