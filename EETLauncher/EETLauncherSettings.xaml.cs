@@ -63,7 +63,7 @@ namespace EETLauncherMVVM {
                         EETGuiProcess = null;
                     }
                     return EETGuiProcess;
-                } );
+                    }).ConfigureAwait(false);
                 if (result == null) return;
                 EETGui.Current = GetEETCurrentGUI();
                 EETGui.ChangeTo = GetEETChangeToGUI( EETGui.Current );
