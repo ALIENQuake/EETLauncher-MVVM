@@ -13,7 +13,7 @@ jobs:
            cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
            .\MSBuild.exe -t:restore -p:Configuration=Release $Env:GITHUB_WORKSPACE\EETLauncher\EETLauncherMVVM.csproj
       - name: Clean temp directory
-        run: gci -r
+        run: gci . -r
         working-directory: $Env:GITHUB_WORKSPACE
       - name: Upload artifact
         uses: actions/upload-artifact@master
