@@ -3,7 +3,7 @@ name: CI
 on: [push]
 
 jobs:
-  build:
+  1:
     runs-on: windows-2019
     steps:
     - uses: actions/checkout@master
@@ -11,12 +11,13 @@ jobs:
       uses: warrenbuckley/Setup-MSBuild@v1
     - name: MSBuild
       run: msbuild -t:restore -p:Configuration=Release $Env:GITHUB_WORKSPACE\EETLauncher.sln
-    - name: Display the path
-      run: echo ${env:PATH}
-      shell: pwsh
+  2:
+    runs-on: windows-2019
+    steps:
     - name: GCI
       run: Get-ChildItem $Env:GITHUB_WORKSPACE -Recurse
-      shell: pwsh
+    
+
       #- name: Upload artifact
       #  uses: actions/upload-artifact@master
       #  with:
