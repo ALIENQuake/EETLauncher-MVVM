@@ -13,6 +13,8 @@ namespace EETLauncherMVVM {
     public partial class EETLauncherMain {
 
         public EETLauncherMain() {
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+            CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
             InitializeComponent();
             DataContext = new MainViewModel();

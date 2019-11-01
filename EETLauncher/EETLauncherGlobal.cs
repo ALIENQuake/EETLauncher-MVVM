@@ -36,6 +36,7 @@ namespace EETLauncherMVVM {
             return list[1].Replace( "\"", string.Empty );
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "InvariantCulture as default")]
         public static string GetEETCurrentGUI() {
             var test = "";
             var dataFile = File.ReadAllLines( AppRootPath + WeiDULogFileName ).ToList();
