@@ -3,23 +3,26 @@ name: CI
 on: [push]
 
 jobs:
-  a1:
+  build:
     runs-on: windows-2019
     steps:
+    - name: checkout@master
     - uses: actions/checkout@master
-    - name: Setup MSBuild.exe
+      
+    - name: Setup MSBuild
       uses: warrenbuckley/Setup-MSBuild@v1
+      
     - name: Setup Nuget.exe
       uses: warrenbuckley/Setup-Nuget@v1
-    - name: nuget restore
+      
+    - name: Restore nuget packages
       run: nuget restore $Env:GITHUB_WORKSPACE\EETLauncher.sln
-    - name: MSBuild
-      run: msbuild $Env:GITHUB_WORKSPACE\EETLauncher\EETLauncherMVVM.csproj /p:Configuration=Release
-    - name: GCI
-      run: Get-ChildItem $Env:GITHUB_WORKSPACE -Recurse
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@master
-      with:
-        name: EETLauncher-Release
-        path: d:\a\EETLauncher-MVVM\EETLauncher-MVVM\EETLauncher\bin\Release\
+    - name: Build Release
+      run: msbuild $Env:GITHUB_WORKSPACE\EETLauncher\EETLauncherMVVM.csproj /p:Configuration=Release
+
+#    - name: Upload artifact
+#      uses: actions/upload-artifact@master
+#      with:
+#        name: EETLauncher-Release
+#        path: d:\a\EETLauncher-MVVM\EETLauncher-MVVM\EETLauncher\bin\Release\
