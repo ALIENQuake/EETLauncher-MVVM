@@ -9,6 +9,8 @@ jobs:
     - uses: actions/checkout@master
     - name: Setup MSBuild.exe
       uses: warrenbuckley/Setup-MSBuild@v1
+    - name: nuget restore
+      run: nuget restore $Env:GITHUB_WORKSPACE\EETLauncher.sln
     - name: MSBuild
       run: msbuild $Env:GITHUB_WORKSPACE\EETLauncher\EETLauncherMVVM.csproj /p:Configuration=Release
     - name: GCI
