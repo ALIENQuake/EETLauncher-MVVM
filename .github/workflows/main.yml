@@ -16,7 +16,7 @@ jobs:
         run: echo ${env:PATH}
         shell: pwsh
       - name: GCI
-        run: Get-ChildItem ${env:PATH} -Recurse
+        run: Get-ChildItem $PWD -Recurse
         shell: pwsh
       #- name: Upload artifact
       #  uses: actions/upload-artifact@master
