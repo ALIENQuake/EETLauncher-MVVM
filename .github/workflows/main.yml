@@ -3,7 +3,7 @@ name: CI
 on: [push]
 
 jobs:
-  1:
+  a1:
     runs-on: windows-2019
     steps:
     - uses: actions/checkout@master
@@ -11,7 +11,7 @@ jobs:
       uses: warrenbuckley/Setup-MSBuild@v1
     - name: MSBuild
       run: msbuild -t:restore -p:Configuration=Release $Env:GITHUB_WORKSPACE\EETLauncher.sln
-  2:
+  a2:
     runs-on: windows-2019
     steps:
     - name: GCI
