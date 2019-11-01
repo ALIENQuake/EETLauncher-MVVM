@@ -15,5 +15,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@master
         with:
-          name: my-artifact
-          path: $Env:GITHUB_WORKSPACE\EETLauncher-MVVM\EETLauncher\bin\Release\EETLauncher.exe
+          name: EETLauncher-Release
+          path: $Env:GITHUB_WORKSPACE\EETLauncher\bin\Release
