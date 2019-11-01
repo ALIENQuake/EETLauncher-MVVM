@@ -10,7 +10,7 @@ jobs:
     - name: Setup MSBuild.exe
       uses: warrenbuckley/Setup-MSBuild@v1
     - name: MSBuild
-      run: msbuild $Env:GITHUB_WORKSPACE\EETLauncher-MVVM\EETLauncher.sln
+      run: msbuild $Env:GITHUB_WORKSPACE\EETLauncher.sln
     - name: Display the path
       run: echo ${env:PATH}
       shell: pwsh
