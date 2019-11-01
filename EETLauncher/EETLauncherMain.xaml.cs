@@ -6,6 +6,7 @@ using System.Windows.Input;
 using static EETLauncherMVVM.EETLauncherConfig;
 using static EETLauncherMVVM.EETLauncherGlobal;
 
+[assembly: NeutralResourcesLanguage("en")]
 namespace EETLauncherMVVM {
     /// <summary>
     /// Interaction logic for <see cref="EETLauncher"/>.xaml
