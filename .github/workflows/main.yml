@@ -10,7 +10,7 @@ jobs:
     - name: Setup MSBuild.exe
       uses: warrenbuckley/Setup-MSBuild@v1
     - name: MSBuild
-      run: msbuild -t:restore -p:Configuration=Release $Env:GITHUB_WORKSPACE\EETLauncher.sln
+      run: msbuild -t:restore -p:Configuration=Release -p:OutDir=$Env:GITHUB_WORKSPACE\ $Env:GITHUB_WORKSPACE\EETLauncher.sln
     - name: GCI
       run: Get-ChildItem $Env:GITHUB_WORKSPACE -Recurse
     
