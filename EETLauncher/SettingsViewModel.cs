@@ -19,7 +19,7 @@ namespace EETLauncherMVVM {
         public Visibility _logVisibility;
 
         public SettingsViewModel() {
-            Color = new SolidColorBrush( Colors.White );
+            Color = new SolidColorBrush(Colors.White);
             CurrentGui = "BG2";
             ChangeTo = "SoD";
             Enabled = true;
@@ -53,12 +53,12 @@ namespace EETLauncherMVVM {
             set => this.RaiseAndSetIfChanged(ref _logVisibility, value);
         }
 
-        public ICommand OpenEETLua {get;}
-        public ICommand ChangeEETGuiAsync {get;}
+        public ICommand OpenEETLua { get; }
+        public ICommand ChangeEETGuiAsync { get; }
 
         public void OpenEETLua_OnExecuted() {
-            if ( TestEETBaldurLua() ) {
-                Process.Start( EETBaldurLua );
+            if (TestEETBaldurLua()) {
+                Process.Start(EETBaldurLua);
             } else {
                 //EETLauncherSettings_TB_Log.Visibility = Visibility.Visible;
                 LogVisibility = Visibility.Visible;
@@ -69,35 +69,37 @@ namespace EETLauncherMVVM {
             Enabled = false;
             Color = Brushes.White;
 
-            var EETGuiProcess = new Process { StartInfo = SetEETGUI( ChangeTo ) };
+            using (var process = new Process { StartInfo = SetEETGUI(ChangeTo) }) {
+                var EETGuiProcess = process;
 
-            try {
-                var result = await Task.Run( () => {
-                    EETGuiProcess.Start();
-                    if (EETGuiProcess.Id >= 0)
+                try {
+                    using (var result = await Task.Run(() =>
                     {
-                        EETGuiProcess?.WaitForExit();
-                    }
-                    else
-                    {
-                        EETGuiProcess = null;
-                    }
-                    return EETGuiProcess;
+                        EETGuiProcess.Start();
+                        if (EETGuiProcess.Id >= 0) {
+                            EETGuiProcess?.WaitForExit();
+                        } else {
+                            EETGuiProcess = null;
+                        }
+                        return EETGuiProcess;
                     }).ConfigureAwait(false)) {
-                if (result == null) return;
+                        if (result == null) return;
+                    }
 
-                var temp = CurrentGui;
-                CurrentGui = ChangeTo;
-                ChangeTo = temp;
+                    var temp = CurrentGui;
+                    CurrentGui = ChangeTo;
+                    ChangeTo = temp;
 
-                Color = Brushes.Green;
+                    Color = Brushes.Green;
 
-            } catch ( Exception ex ) {
-                Color = Brushes.Red;
-                //EETLauncherSettings_TB_Log.Text = ex.Message;
-                File.AppendAllText( Environment.SpecialFolder.ApplicationData + Path.DirectorySeparatorChar + AppLogFileName, ex.Message + Environment.NewLine );
-            } finally {
-                Enabled = true;
+                } catch (Exception ex) {
+                    Color = Brushes.Red;
+                    //EETLauncherSettings_TB_Log.Text = ex.Message;
+                    File.AppendAllText(Environment.SpecialFolder.ApplicationData + Path.DirectorySeparatorChar + AppLogFileName, ex.Message + Environment.NewLine);
+                    throw;
+                } finally {
+                    Enabled = true;
+                }
             }
         }
     }
