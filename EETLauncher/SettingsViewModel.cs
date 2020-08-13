@@ -1,3 +1,5 @@
+//Copyright © alienquake@hotmail.com
+
 using System;
 using System.Diagnostics;
 using System.IO;
