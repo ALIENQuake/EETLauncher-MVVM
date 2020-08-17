@@ -1,4 +1,4 @@
-name: CI
+name: Build Application using Release configuration
 
 on: [push]
 
@@ -13,6 +13,6 @@ jobs:
       uses: warrenbuckley/Setup-Nuget@v1
     - name: Restore nuget packages
       run: nuget restore $Env:GITHUB_WORKSPACE\EETLauncher.sln
-    - name: Build Release
+    - name: Build using Release configuration
       run: msbuild $Env:GITHUB_WORKSPACE\EETLauncher\EETLauncherMVVM.csproj /p:Configuration=Release
       
