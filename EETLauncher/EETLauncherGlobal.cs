@@ -2,11 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using static EETLauncherMVVM.EETLauncherConfig;
-using static EETLauncherMVVM.EETLauncherStringExtensions;
+using static EETLauncherMVVM.EETLauncherExtensionMethod;
 
 namespace EETLauncherMVVM {
     public static class EETLauncherGlobal {
@@ -37,7 +36,6 @@ namespace EETLauncherMVVM {
             return list[1].Replace("\"", string.Empty);
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "InvariantCulture as default")]
         public static string GetEETCurrentGUI() {
             var test = "";
             var dataFile = File.ReadAllLines(AppRootPath + WeiDULogFileName).ToList();
