@@ -1,0 +1,88 @@
+name: build
+
+on:
+  workflow_dispatch:
+  push:
+    tags: [ "*.*.*" ]
+
+jobs:
+  build:
+    runs-on: windows-2019
+    permissions: write-all
+    steps:
+      
+      - name: Checkout Source
+        uses: actions/checkout@v3
+        with:
+          path: Source
+
+      - name: Setup NuGet.exe for use with actions
+        uses: NuGet/setup-nuget@v1.0.7
+
+      - name: Setup MSBuild for use with actions
+        uses: microsoft/setup-msbuild@v1.1
+
+      - name: EETLauncher_snk
+        env:
+          EETLauncher_snk: ${{ secrets.EETLauncher_snk }}
+        run: |
+          Set-Content -Path "EETLauncher/EETLauncher.snk" -Value ([System.Convert]::FromBase64String($env:EETLauncher_snk)) -AsByteStream
+        working-directory: Source
+        
+      - name: EETLauncher_TemporaryKey_pfx
+        env:
+          EETLauncher_TemporaryKey_pfx: ${{ secrets.EETLauncher_TemporaryKey_pfx }}
+        run: |
+          Set-Content -Path "EETLauncher\EETLauncher_TemporaryKey.pfx" -Value ([System.Convert]::FromBase64String($env:EETLauncher_TemporaryKey_pfx)) -AsByteStream
+        working-directory: Source
+        
+      - name: Get-Childitem -Recurse
+        run: |
+          Get-Childitem -Recurse
+        working-directory: Source
+      
+      - name: Import-PfxCertificate
+        run: |
+          Import-PfxCertificate -FilePath "$env:GITHUB_WORKSPACE\Source\EETLauncher\EETLauncher_TemporaryKey.pfx" -CertStoreLocation Cert:\CurrentUser\My
+        working-directory: Source
+      
+      - name: Restore Packages
+        run: nuget restore EETLauncher/EETLauncherWPF.csproj
+        working-directory: Source
+      
+      - name: Build solution
+        run: msbuild EETLauncher/EETLauncherWPF.csproj -property:Configuration=Release
+        working-directory: Source
+        
+      - name: Checkout Destination
+        uses: actions/checkout@v3
+        with: 
+          repository: ALIENQuake/EETLauncher
+          ssh-key: ${{ secrets.ALIENQUAKE_EETLAUNCHER_SSH_KEY }}
+          path: Destination
+
+      - name: Create file
+        run: |
+          Copy-Item -Path "$env:GITHUB_WORKSPACE\Source\EETLauncher\bin\Release\EETLauncher.exe"
+          #Get-Item -Path "$env:GITHUB_WORKSPACE\Source\EETLauncher\bin\Release\EETLauncher.exe"
+          #echo $env:GITHUB_RUN_ID | Out-File z.txt
+        working-directory: Destination
+        
+      - name: Push Destination
+        run: |
+          git add .
+          git config user.email "alienquake@hotmail.com"
+          git config user.name "ALIENQuake"
+          git commit -am "Add files via upload"
+          git push
+        working-directory: Destination
+
+      - name: EETLauncher.exe artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: EETLauncher.zip
+          path: D:/a/EETLauncher-WPF/EETLauncher-WPF/Source/EETLauncher/bin/Release/EETLauncher.exe
+      
+      - name: Finish
+        run: echo Finish
+        
