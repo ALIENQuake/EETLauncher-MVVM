@@ -88,10 +88,7 @@ namespace EETLauncherMVVM {
                         if (result == null) return;
                     }
 
-                    var temp = CurrentGui;
-                    CurrentGui = ChangeTo;
-                    ChangeTo = temp;
-
+                    (ChangeTo, CurrentGui) = (CurrentGui, ChangeTo);
                     Color = Brushes.Green;
 
                 } catch (Exception ex) {

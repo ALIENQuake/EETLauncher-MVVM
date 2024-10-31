@@ -39,6 +39,7 @@ namespace EETLauncherMVVM {
         public static string GetEETCurrentGUI() {
             var test = "";
             var dataFile = File.ReadAllLines(AppRootPath + WeiDULogFileName).ToList();
+
             foreach (var line in dataFile) {
                 if (ContainsIgnoreCase(line[0].ToString(), "/")) continue;
                 test = ContainsIgnoreCase(line, EETGUIModFileName) ? "SoD" : "BG2";
