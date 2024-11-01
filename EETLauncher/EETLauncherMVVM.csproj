@@ -24,7 +24,6 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>E:\Gry-IE\EET\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -305,6 +304,14 @@
     <ApplicationDefinition Include="EETLauncher.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Costura.Fody" Version="6.0.0-beta0000">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Fody" Version="6.8.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="ReactiveUI" Version="20.1.63" />
     <PackageReference Include="ReactiveUI.WPF" Version="20.1.63" />
