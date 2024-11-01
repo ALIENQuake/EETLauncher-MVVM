@@ -6,6 +6,7 @@ namespace EETLauncherMVVM {
         internal static string BG2EENotDetected;
         internal static string EETBaldurLua;
         internal static string EETHomePage;
+        internal static string EETModFileName;
         internal static string EETFlagFilePath;
         internal static string EETGUIExeFileName;
         internal static string EETGUIModFileName;

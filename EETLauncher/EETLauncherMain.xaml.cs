@@ -28,6 +28,7 @@ namespace EETLauncherMVVM {
             GameCfgFileName = (string)FindResource("GameCfgFileName");
             GameExeFileName = (string)FindResource("GameExeFileName");
             GameEngineFileName = (string)FindResource("GameEngineFileName");
+            EETModFileName = (string)FindResource("EETModFileName");
             EETGUIComponentNumber = (string)FindResource("EETGUIComponentNumber");
             EETGUIModFileName = (string)FindResource("EETGUIModFileName");
             EETGUIExeFileName = (string)FindResource("EETGUIExeFileName");

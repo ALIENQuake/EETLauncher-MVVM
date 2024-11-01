@@ -53,7 +53,6 @@ namespace EETLauncherMVVM {
                     return "Incorrect value: " + test;
             }
         }
-
         public static string GetEETChangeToGUI(string Current) {
             switch (Current) {
                 case "BG2":
@@ -75,7 +74,20 @@ namespace EETLauncherMVVM {
                 UseShellExecute = false
             };
         }
+        public static string FindEETLanguageID(string filePath) {
 
+            List<string> data = new List<string>(File.ReadAllLines(filePath).ToList());
+            foreach (string line in data) {
+                if (ContainsIgnoreCase(line, EETModFileName)) {
+                    int hashIndex = line.IndexOf('#');
+                    if (hashIndex != -1 && hashIndex < line.Length - 1) {
+                        var stringAfterHash = line.Substring(hashIndex + 1, 2);
+                        return stringAfterHash;
+                    }
+                }
+            }
+            return null;
+        }
         public static ProcessStartInfo SetEETGUI(string GUI) {
             var procArgList = new List<string>();
             switch (GUI) {
@@ -92,7 +104,9 @@ namespace EETLauncherMVVM {
                     }
             }
 
-            procArgList.AddRange(new[] { "--noautoupdate", "--no-exit-pause" });
+            var languageNumber = FindEETLanguageID(AppRootPath + WeiDULogFileName);
+
+            procArgList.AddRange(new[] { "--noautoupdate", "--no-exit-pause", $"--language {languageNumber}" });
 
             var StartInfo = SetProcessStartInfo(EETGUIExeFileName, procArgList);
             return StartInfo;
