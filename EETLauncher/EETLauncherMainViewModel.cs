@@ -7,7 +7,7 @@ using ReactiveUI;
 using static EETLauncherMVVM.EETLauncherConfig;
 
 namespace EETLauncherMVVM {
-    class MainViewModel : ReactiveObject {
+    class EETLauncherMainViewModel : ReactiveObject {
 
         public bool _enabled;
         public Visibility _logVisibility;
@@ -19,7 +19,7 @@ namespace EETLauncherMVVM {
         public ICommand CheckForUpdates { get; }
         public ICommand Exit { get; }
 
-        public MainViewModel() {
+        public EETLauncherMainViewModel() {
 
             Enabled = true;
             LogVisibility = Visibility.Hidden;

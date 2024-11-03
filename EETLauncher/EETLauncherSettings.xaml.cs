@@ -22,7 +22,7 @@ namespace EETLauncherMVVM {
 
         public EETLauncherSettings() {
             InitializeComponent();
-            DataContext = new SettingsViewModel();
+            DataContext = new EETLauncherSettingsViewModel();
         }
 
         private void OpenEETLua_CanExecute(object sender, CanExecuteRoutedEventArgs e) {
@@ -48,8 +48,7 @@ namespace EETLauncherMVVM {
             EETLauncherSettings_L_CurrentGui.Visibility = Visibility.Hidden;
             EETLauncherSettings_L_CurrentGui.Foreground = new SolidColorBrush(Colors.White);
 
-            using (var process = new Process { StartInfo = SetEETGUI(EETGui.ChangeTo) }) {
-                var EETGuiProcess = process;
+            using (var EETGuiProcess = new Process { StartInfo = SetEETGUI(EETGui.ChangeTo) }) {
 
                 try {
 

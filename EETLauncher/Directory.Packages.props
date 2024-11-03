@@ -1,0 +1,13 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+    <NoWarn>$(NoWarn);NU1507</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="costura.fody" Version="6.0.0-beta0000" />
+    <PackageVersion Include="Expression.Blend.Sdk.WPF" Version="1.0.1" />
+    <PackageVersion Include="Fody" Version="6.8.2" />
+    <PackageVersion Include="Microsoft.CSharp" Version="4.7.0" />
+  </ItemGroup>
+</Project>

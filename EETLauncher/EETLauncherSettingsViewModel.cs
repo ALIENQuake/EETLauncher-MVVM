@@ -12,7 +12,7 @@ using static EETLauncherMVVM.EETLauncherConfig;
 using static EETLauncherMVVM.EETLauncherGlobal;
 
 namespace EETLauncherMVVM {
-    class SettingsViewModel : ReactiveObject {
+    class EETLauncherSettingsViewModel : ReactiveObject {
 
         private string _changeTo;
         private string _currentGui;
@@ -20,7 +20,7 @@ namespace EETLauncherMVVM {
         public bool _enabled;
         public Visibility _logVisibility;
 
-        public SettingsViewModel() {
+        public EETLauncherSettingsViewModel() {
             Color = new SolidColorBrush(Colors.White);
             CurrentGui = "BG2";
             ChangeTo = "SoD";

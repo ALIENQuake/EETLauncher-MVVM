@@ -20,7 +20,7 @@ namespace EETLauncherMVVM {
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
             InitializeComponent();
-            DataContext = new MainViewModel();
+            DataContext = new EETLauncherMainViewModel();
 
             AppRootPath = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory) + Path.DirectorySeparatorChar;
             AppLogFileName = (string)FindResource("AppLogFileName");
