@@ -8,10 +8,10 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using ReactiveUI;
-using static EETLauncherMVVM.EETLauncherConfig;
-using static EETLauncherMVVM.EETLauncherGlobal;
+using static EETLauncher.EETLauncherConfig;
+using static EETLauncher.EETLauncherGlobal;
 
-namespace EETLauncherMVVM {
+namespace EETLauncher {
     class EETLauncherSettingsViewModel : ReactiveObject {
 
         private string _changeTo;

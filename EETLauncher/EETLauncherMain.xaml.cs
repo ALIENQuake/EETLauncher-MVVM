@@ -5,11 +5,11 @@ using System.IO;
 using System.Resources;
 using System.Windows;
 using System.Windows.Input;
-using static EETLauncherMVVM.EETLauncherConfig;
-using static EETLauncherMVVM.EETLauncherGlobal;
+using static EETLauncher.EETLauncherConfig;
+using static EETLauncher.EETLauncherGlobal;
 
 [assembly: NeutralResourcesLanguage("en")]
-namespace EETLauncherMVVM {
+namespace EETLauncher {
 
     /// <summary>
     /// Interaction logic for <see cref="EETLauncher"/>.xaml

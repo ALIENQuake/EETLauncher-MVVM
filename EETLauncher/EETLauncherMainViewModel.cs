@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using ReactiveUI;
-using static EETLauncherMVVM.EETLauncherConfig;
+using static EETLauncher.EETLauncherConfig;
 
-namespace EETLauncherMVVM {
+namespace EETLauncher {
     class EETLauncherMainViewModel : ReactiveObject {
 
         public bool _enabled;
