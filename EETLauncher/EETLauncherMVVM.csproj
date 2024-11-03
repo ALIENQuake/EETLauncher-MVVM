@@ -304,18 +304,11 @@
     <ApplicationDefinition Include="EETLauncher.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Costura.Fody" Version="6.0.0-beta0000">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Fody" Version="6.8.2">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="ReactiveUI" Version="20.1.63" />
-    <PackageReference Include="ReactiveUI.WPF" Version="20.1.63" />
-    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+    <PackageReference Include="Costura.Fody" />
+    <PackageReference Include="Fody" />
+    <PackageReference Include="Microsoft.CSharp" />
+    <PackageReference Include="ReactiveUI" />
+    <PackageReference Include="ReactiveUI.WPF" />
+    <PackageReference Include="System.Text.Json" />
   </ItemGroup>
-
 </Project>
