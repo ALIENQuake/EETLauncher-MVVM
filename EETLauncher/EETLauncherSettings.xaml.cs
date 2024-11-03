@@ -55,7 +55,14 @@ namespace EETLauncherMVVM {
                     var result = await Task.Run(() => {
                         EETGuiProcess.Start();
                         if (EETGuiProcess.Id >= 0) {
+                            if (EETGuiProcess == null || EETGuiProcess.Id < 0)
+                            {
+                                return null;
+                            }
                             EETGuiProcess?.WaitForExit();
+                            return EETGuiProcess;
+                        } else if (EETGuiProcess == null){
+                            return null;
                         }
                         return EETGuiProcess;
                     });
