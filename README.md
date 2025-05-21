@@ -1,4 +1,4 @@
-# EETLauncher - WPF
+# EETLauncher - WPF with MVVM
 
 **EETLauncher** is a launcher for EET with minimal configuration options.
 
@@ -15,8 +15,9 @@
 
 - **c#**  
 - **Windows Presentation Foundation**  
+- **ReactiveUI**
 
 ## Key Remarks
 
-- **WPF implementation:**  
-  With RoutedUICommand.
+- **WPF with MVVM implementation:**  
+  With ReactiveUI.
