@@ -1,3 +1,5 @@
+THE PROJECT IS NOT FINISHED!
+
 # EETLauncher - WPF with MVVM
 
 **EETLauncher** is a launcher for EET with minimal configuration options.
