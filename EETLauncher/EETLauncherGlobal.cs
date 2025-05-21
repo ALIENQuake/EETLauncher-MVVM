@@ -76,7 +76,7 @@ namespace EETLauncher {
         }
         public static string FindEETLanguageID(string filePath) {
 
-            List<string> data = new List<string>(File.ReadAllLines(filePath).ToList());
+            List<string> data = new(File.ReadAllLines(filePath).ToList());
             foreach (string line in data) {
                 if (ContainsIgnoreCase(line, EETModFileName)) {
                     int hashIndex = line.IndexOf('#');

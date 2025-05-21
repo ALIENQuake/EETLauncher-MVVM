@@ -305,11 +305,27 @@
     <ApplicationDefinition Include="EETLauncher.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Costura.Fody" />
-    <PackageReference Include="Fody" />
+    <PackageReference Include="Costura.Fody">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Fody">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform" />
     <PackageReference Include="Microsoft.CSharp" />
+    <PackageReference Include="PolySharp">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="ReactiveUI" />
     <PackageReference Include="ReactiveUI.WPF" />
+    <PackageReference Include="System.Buffers" />
+    <PackageReference Include="System.Dynamic.Runtime" />
+    <PackageReference Include="System.Memory" />
+    <PackageReference Include="System.Numerics.Vectors" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" />
     <PackageReference Include="System.Text.Json" />
   </ItemGroup>
   <ItemGroup>

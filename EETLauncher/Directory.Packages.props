@@ -5,12 +5,19 @@
     <NoWarn>$(NoWarn);NU1507</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="costura.fody" Version="6.0.0-beta0000" />
+    <PackageVersion Include="costura.fody" Version="6.0.0" />
     <PackageVersion Include="Expression.Blend.Sdk.WPF" Version="1.0.1" />
-    <PackageVersion Include="Fody" Version="6.8.2" />
+    <PackageVersion Include="Fody" Version="6.9.2" />
+    <PackageVersion Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform" Version="4.1.0" />
     <PackageVersion Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageVersion Include="ReactiveUI" Version="20.1.63" />
-    <PackageVersion Include="ReactiveUI.WPF" Version="20.1.63" />
-    <PackageVersion Include="System.Text.Json" Version="8.0.5" />
+    <PackageVersion Include="PolySharp" Version="1.15.0" />
+    <PackageVersion Include="ReactiveUI" Version="20.2.45" />
+    <PackageVersion Include="ReactiveUI.WPF" Version="20.2.45" />
+    <PackageVersion Include="System.Buffers" Version="4.6.1" />
+    <PackageVersion Include="System.Dynamic.Runtime" Version="4.3.0" />
+    <PackageVersion Include="System.Memory" Version="4.6.3" />
+    <PackageVersion Include="System.Numerics.Vectors" Version="4.6.1" />
+    <PackageVersion Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.2" />
+    <PackageVersion Include="System.Text.Json" Version="9.0.5" />
   </ItemGroup>
 </Project>
