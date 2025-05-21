@@ -47,40 +47,37 @@ namespace EETLauncher {
             EETLauncherSettings_LB_ChangeGui.Visibility = Visibility.Hidden;
             EETLauncherSettings_L_CurrentGui.Visibility = Visibility.Hidden;
             EETLauncherSettings_L_CurrentGui.Foreground = new SolidColorBrush(Colors.White);
+            try {
 
-            using (var EETGuiProcess = new Process { StartInfo = SetEETGUI(EETGui.ChangeTo) }) {
-
-                try {
-
-                    var result = await Task.Run(() => {
-                        EETGuiProcess.Start();
-                        if (EETGuiProcess.Id >= 0) {
-                            if (EETGuiProcess == null || EETGuiProcess.Id < 0)
-                            {
-                                return null;
-                            }
-                            EETGuiProcess?.WaitForExit();
-                            return EETGuiProcess;
+                var result = await Task.Run(() => {
+                    using Process EETGuiProcess = new() { StartInfo = SetEETGUI(EETGui.ChangeTo) };
+                    EETGuiProcess.Start();
+                    if (EETGuiProcess.Id >= 0) {
+                        if (EETGuiProcess == null || EETGuiProcess.Id < 0)
+                        {
+                            return null;
+                        }
+                        EETGuiProcess?.WaitForExit();
+                        return EETGuiProcess;
                         } else if (EETGuiProcess == null){
                             return null;
                         }
-                        return EETGuiProcess;
-                    });
-                    if (result == null) return;
-                    EETGui.Current = GetEETCurrentGUI();
-                    EETGui.ChangeTo = GetEETChangeToGUI(EETGui.Current);
-                    EETLauncherSettings_L_CurrentGui.Foreground = new SolidColorBrush(Colors.Green);
-                    EETLauncherSettings_L_CurrentGui.Visibility = Visibility.Visible;
-                    EETLauncherSettings_LB_ChangeGui.Visibility = Visibility.Visible;
-                    EETLauncherSettings_LB_Back.Visibility = Visibility.Visible;
-                } catch (Exception ex) {
-                    EETLauncherSettings_L_CurrentGui.Foreground = new SolidColorBrush(Colors.Red);
-                    EETLauncherSettings_LB_Back.Visibility = Visibility.Visible;
-                    EETLauncherSettings_TB_Log.Visibility = Visibility.Visible;
-                    EETLauncherSettings_TB_Log.Text = ex.Message;
-                    File.AppendAllText(Environment.SpecialFolder.ApplicationData + Path.DirectorySeparatorChar + AppLogFileName, ex.Message + Environment.NewLine);
-                    throw;
-                }
+                    return EETGuiProcess;
+                });
+                if (result == null) return;
+                EETGui.Current = GetEETCurrentGUI();
+                EETGui.ChangeTo = GetEETChangeToGUI(EETGui.Current);
+                EETLauncherSettings_L_CurrentGui.Foreground = new SolidColorBrush(Colors.Green);
+                EETLauncherSettings_L_CurrentGui.Visibility = Visibility.Visible;
+                EETLauncherSettings_LB_ChangeGui.Visibility = Visibility.Visible;
+                EETLauncherSettings_LB_Back.Visibility = Visibility.Visible;
+            } catch (Exception ex) {
+                EETLauncherSettings_L_CurrentGui.Foreground = new SolidColorBrush(Colors.Red);
+                EETLauncherSettings_LB_Back.Visibility = Visibility.Visible;
+                EETLauncherSettings_TB_Log.Visibility = Visibility.Visible;
+                EETLauncherSettings_TB_Log.Text = ex.Message;
+                File.AppendAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), AppLogFileName), ex.Message + Environment.NewLine);
+                throw;
             }
         }
 
